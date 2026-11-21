@@ -851,9 +851,10 @@ def predict():
             "message": "Demonstration estimate only; not based on verified property sales."
         })
 
-        except (ValueError, TypeError):
+    except (ValueError, TypeError):
         app.logger.exception("Invalid numeric input in prediction form")
         return jsonify({"error": "Invalid numeric input. Check Render logs."}), 400
+
     except Exception:
         app.logger.exception("Prediction failed")
         return jsonify({"error": "Prediction failed. Please check your entries and try again."}), 500
