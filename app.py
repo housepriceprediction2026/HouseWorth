@@ -824,11 +824,11 @@ def predict():
         if not (100 <= area <= 100000):
             return jsonify({"error": "Area must be between 100 and 100000 sqft."}), 400
 
-        balcony = int(data.get("balcony", 0))
+        balcony = 1 if str(data.get("balcony", "no")).strip().lower() == "yes" else 0
         balcony_count = int(data.get("balcony_count", 0))
-        pool = int(data.get("pool", 0))
+        pool = 1 if str(data.get("pool", "no")).strip().lower() == "yes" else 0
         pool_area = float(data.get("pool_area", 0))
-        garden = int(data.get("garden", 0))
+        garden = 1 if str(data.get("garden", "no")).strip().lower() == "yes" else 0
         garden_area = float(data.get("garden_area", 0))
 
         selected = set(str(x) for x in data.get("facilities", []))
